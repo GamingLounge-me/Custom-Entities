@@ -1,0 +1,4 @@
+name: custom-entities
+version: '${version}'
+main: de.jonas.customentities.Custom_entities
+api-version: '1.20'
