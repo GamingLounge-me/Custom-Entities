@@ -24,6 +24,7 @@ public class Spawn {
                 .withAliases("ce:spawn")
                 .withPermission("CustomEntities.Spawn")
                 .withSubcommand(new CommandAPICommand("sign")
+                        .withArguments(new StringArgument("Name"))
                         .withArguments(arguments)
                         .withArguments(new FloatArgument("size"))
                         .withArguments(new GreedyStringArgument("Text"))
@@ -31,7 +32,13 @@ public class Spawn {
                             String direction = (String) commandArguments.get("direction");
                             String text = (String) commandArguments.get("Text");
                             float size = (float) commandArguments.get("size");
-                            new TextDisplay(player, direction, text, size);
+                            String name = (String) commandArguments.get("Name");
+                            if (cel.hasName(player.getWorld(), name)) {
+                                player.sendMessage(mm.deserialize("<red>Name already used, choose other"));
+                                return;
+                            }
+                            new TextDisplay(player, direction, text, size, name);
+                            cel.setToList(player.getWorld(), name);
                         }))
                 )
                 .withSubcommand(new CommandAPICommand("Bar_Hocker")

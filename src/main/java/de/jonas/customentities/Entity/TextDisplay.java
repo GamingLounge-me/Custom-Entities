@@ -1,10 +1,12 @@
 package de.jonas.customentities.Entity;
 
+import de.jonas.customentities.CustomEntitiesList;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
 import org.bukkit.entity.Display;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
 
@@ -13,11 +15,12 @@ import java.util.Objects;
 public class TextDisplay {
 
     MiniMessage mm = MiniMessage.miniMessage();
+    CustomEntitiesList customEntitiesList = new CustomEntitiesList();
 
-    public TextDisplay(Player player, String direction, String text, float size) {
+    public TextDisplay(Player player, String direction, String text, float size, String name) {
 
         int directionZ, directionX;
-        Location location = player.getLocation().add(0,1,0).toCenterLocation();
+        Location location = player.getLocation().toCenterLocation().add(0,0.5,0);
         switch (direction){
             case "north":
                 directionX = 0;
@@ -53,6 +56,7 @@ public class TextDisplay {
         Transformation tr = t.getTransformation();
         tr.getScale().set(size);
         t.setTransformation(tr);
+        t.getPersistentDataContainer().set(customEntitiesList.entities, PersistentDataType.STRING, name);
         t.setBillboard(Display.Billboard.FIXED);
 
     }

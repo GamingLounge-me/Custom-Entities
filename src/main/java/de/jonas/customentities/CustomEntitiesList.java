@@ -56,7 +56,7 @@ public class CustomEntitiesList {
     }
 
     public void removeEntity(World world, String name) {
-        world.getLivingEntities().forEach(entity -> {
+        world.getEntities().forEach(entity -> {
             if (isSeachedEntity(entity, name)) entity.remove();
         });
     }
@@ -69,6 +69,7 @@ public class CustomEntitiesList {
 
     public boolean hasName(World world, String name) {
         ArrayList<String> list = getList(world);
+        if (list == null) return false;
         return list.contains(name);
     }
 

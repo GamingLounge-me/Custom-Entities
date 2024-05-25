@@ -25,11 +25,11 @@ public class User {
                                         .withArguments(new StringArgument("Name"))
                                         .executesPlayer(((player, commandArguments) -> {
                                             String name = (String) commandArguments.get("Name");
+                                            name = player.getUniqueId() + "-" + name;
                                             if (cel.hasName(player.getWorld(), name)) {
                                                 player.sendMessage(mm.deserialize("<red>Name already used, choose other"));
                                                 return;
                                             }
-                                            name = player.getUniqueId() + "-" + name;
                                             new Barstool(player.getLocation().toCenterLocation(), name);
                                             cel.setToList(player.getWorld(), name);
                                         }))
