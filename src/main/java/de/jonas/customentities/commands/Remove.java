@@ -7,7 +7,6 @@ import dev.jorel.commandapi.arguments.StringArgument;
 public class Remove {
 
     CustomEntitiesList cel = new CustomEntitiesList();
-    // ArrayList<String> list = cel.getList(Custom_entities.INSTANCE.getServer().getWorlds().get(0));
 
     public Remove() {
 
