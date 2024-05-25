@@ -1,27 +1,22 @@
 package de.jonas.customentities.commands;
 
+import de.jonas.customentities.CustomEntitiesList;
 import de.jonas.customentities.Entity.Barstool;
 import dev.jorel.commandapi.CommandAPICommand;
-import dev.jorel.commandapi.CommandPermission;
 import dev.jorel.commandapi.arguments.FloatArgument;
 import dev.jorel.commandapi.arguments.GreedyStringArgument;
+import dev.jorel.commandapi.arguments.StringArgument;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.*;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Transformation;
 
 import java.util.Objects;
 
 public class Spawn {
 
-    public NamespacedKey isCustomEntity = new NamespacedKey("custom-entities",
-            "is_custom_entity_armour_stand_identifier");
     MiniMessage mm = MiniMessage.miniMessage();
+    CustomEntitiesList cel = new CustomEntitiesList();
 
     public Spawn() {
         new CommandAPICommand("custom-entities:spawn")
@@ -45,8 +40,15 @@ public class Spawn {
                         }))
                 )
                 .withSubcommand(new CommandAPICommand("Bar_Hocker")
+                        .withArguments(new StringArgument("Name"))
                         .executesPlayer(((player, commandArguments) -> {
-                            new Barstool(player.getLocation().toCenterLocation());
+                            String name = (String) commandArguments.get("Name");
+                            if (cel.hasName(player.getWorld(), name)) {
+                                player.sendMessage(mm.deserialize("<red>Name already used, choose other"));
+                                return;
+                            }
+                            new Barstool(player.getLocation().toCenterLocation(), name);
+                            cel.setToList(player.getWorld(), name, player);
                         }))
                 )
                 .register();
