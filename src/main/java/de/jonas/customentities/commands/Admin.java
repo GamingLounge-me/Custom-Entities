@@ -1,7 +1,6 @@
 package de.jonas.customentities.commands;
 
 import de.jonas.customentities.CustomEntitiesList;
-import de.jonas.customentities.Custom_entities;
 import dev.jorel.commandapi.CommandAPICommand;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class Admin {
                         .executesPlayer(((player, commandArguments) -> {
                             ArrayList<String> list = cel.getList(player.getWorld());
                             list.forEach(string -> {
-                               cel.removeFromList(player.getWorld(), string, player);
+                               cel.removeFromList(player.getWorld(), string);
                                cel.removeEntity(player.getWorld(), string);
                             });
                         }))

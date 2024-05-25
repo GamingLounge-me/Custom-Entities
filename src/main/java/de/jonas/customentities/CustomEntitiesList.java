@@ -3,7 +3,6 @@ package de.jonas.customentities;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import java.util.ArrayList;
@@ -13,8 +12,7 @@ public class CustomEntitiesList {
     public NamespacedKey names = new NamespacedKey("customentities", "list_of_customentities");
     public NamespacedKey entities = new NamespacedKey("customentities", "entity_list_of_customentities");
 
-    public void setToList(World world, String name, Player player) {
-        // name = player.getUniqueId() + "-" + name;
+    public void setToList(World world, String name) {
         PersistentDataContainer container = world.getPersistentDataContainer();
         if (world.getPersistentDataContainer().has(names)) {
             String get = container.get(names, PersistentDataType.STRING);
@@ -25,8 +23,7 @@ public class CustomEntitiesList {
         }
     }
 
-    public void removeFromList(World world, String name, Player player) {
-        // name = player.getUniqueId() + "-" + name;
+    public void removeFromList(World world, String name) {
         PersistentDataContainer container = world.getPersistentDataContainer();
         if (world.getPersistentDataContainer().has(names)) {
             String get = container.get(names, PersistentDataType.STRING);
@@ -36,9 +33,7 @@ public class CustomEntitiesList {
                 int la = re.lastIndexOf(s);
                 re.add(la + 1, s);
             }
-            if (re.contains(name)) {
-                re.remove(name);
-            }
+            re.remove(name);
             String set = re.toArray(String[]::new).toString();
             container.set(names, PersistentDataType.STRING, set);
         } else {
@@ -69,14 +64,12 @@ public class CustomEntitiesList {
     public boolean isSeachedEntity(Entity entity, String name) {
         PersistentDataContainer container = entity.getPersistentDataContainer();
         if (!container.has(entities)) return false;
-        if (container.get(entities, PersistentDataType.STRING).equalsIgnoreCase(name)) return true;
-        return false;
+        return container.get(entities, PersistentDataType.STRING).equalsIgnoreCase(name);
     }
 
     public boolean hasName(World world, String name) {
         ArrayList<String> list = getList(world);
-        if (list.contains(name)) return true;
-        return false;
+        return list.contains(name);
     }
 
 }

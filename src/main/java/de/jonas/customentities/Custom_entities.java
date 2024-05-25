@@ -3,10 +3,10 @@ package de.jonas.customentities;
 import de.jonas.customentities.commands.Admin;
 import de.jonas.customentities.commands.Remove;
 import de.jonas.customentities.commands.Spawn;
+import de.jonas.customentities.commands.User;
 import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPIBukkitConfig;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +26,7 @@ public final class Custom_entities extends JavaPlugin {
         new Spawn();
         new Remove();
         new Admin();
+        new User();
     }
 
     @Override

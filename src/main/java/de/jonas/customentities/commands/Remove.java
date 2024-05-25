@@ -17,7 +17,7 @@ public class Remove {
                 .executesPlayer(((player, commandArguments) -> {
                     String name = (String) commandArguments.get("name");
                     cel.removeEntity(player.getWorld(), name);
-                    cel.removeFromList(player.getWorld(), name, player);
+                    cel.removeFromList(player.getWorld(), name);
                 }))
                 .register();
 
