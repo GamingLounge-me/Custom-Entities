@@ -2,6 +2,7 @@ package de.jonas.customentities.commands;
 
 import de.jonas.customentities.CustomEntitiesList;
 import de.jonas.customentities.Entity.Barstool;
+import de.jonas.customentities.Entity.SporeBlossom;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.StringArgument;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -32,6 +33,19 @@ public class User {
                                             }
                                             new Barstool(player.getLocation().toCenterLocation(), name);
                                             cel.setToList(player.getWorld(), name);
+                                        }))
+                                )
+                                .withSubcommand(new CommandAPICommand("Sporeblossom")
+                                        .withArguments(new StringArgument("Name"))
+                                        .executesPlayer(((sender, args) -> {
+                                            String name = (String) args.get("Name");
+                                            name = sender.getUniqueId() + "-" + name;
+                                            if (cel.hasName(sender.getWorld(), name)) {
+                                                sender.sendMessage(mm.deserialize("<red>Name already used, choose other!"));
+                                                return;
+                                            }
+                                            new SporeBlossom(sender.getLocation().toCenterLocation(), name);
+                                            cel.setToList(sender.getWorld(), name);
                                         }))
                                 )
                 )

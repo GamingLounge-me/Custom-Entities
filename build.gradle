@@ -53,5 +53,5 @@ processResources {
 shadowJar {
     archiveBaseName.set('custom-entites')
     archiveClassifier.set('')
-    relocate("dev.jorel.commandapi", "de.jonas.stuff.commandapi")
+    relocate("dev.jorel.commandapi", "de.jonas.customentites.commandapi")
 }

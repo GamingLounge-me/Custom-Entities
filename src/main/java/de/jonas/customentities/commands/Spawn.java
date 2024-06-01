@@ -2,6 +2,7 @@ package de.jonas.customentities.commands;
 
 import de.jonas.customentities.CustomEntitiesList;
 import de.jonas.customentities.Entity.Barstool;
+import de.jonas.customentities.Entity.SporeBlossom;
 import de.jonas.customentities.Entity.TextDisplay;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.*;
@@ -31,10 +32,13 @@ public class Spawn {
                         .executesPlayer(((player, commandArguments) -> {
                             String direction = (String) commandArguments.get("direction");
                             String text = (String) commandArguments.get("Text");
-                            float size = (float) commandArguments.get("size");
+                            Float size = (Float) commandArguments.get("size");
+                            if (size == null) {
+                                size = 1f;
+                            }
                             String name = (String) commandArguments.get("Name");
                             if (cel.hasName(player.getWorld(), name)) {
-                                player.sendMessage(mm.deserialize("<red>Name already used, choose other"));
+                                player.sendMessage(mm.deserialize("<red>Name already used, choose other!"));
                                 return;
                             }
                             new TextDisplay(player, direction, text, size, name);
@@ -46,11 +50,23 @@ public class Spawn {
                         .executesPlayer(((player, commandArguments) -> {
                             String name = (String) commandArguments.get("Name");
                             if (cel.hasName(player.getWorld(), name)) {
-                                player.sendMessage(mm.deserialize("<red>Name already used, choose other"));
+                                player.sendMessage(mm.deserialize("<red>Name already used, choose other!"));
                                 return;
                             }
                             new Barstool(player.getLocation().toCenterLocation(), name);
                             cel.setToList(player.getWorld(), name);
+                        }))
+                )
+                .withSubcommand(new CommandAPICommand("Sporeblossom")
+                        .withArguments(new StringArgument("Name"))
+                        .executesPlayer(((sender, args) -> {
+                            String name = (String) args.get("Name");
+                            if (cel.hasName(sender.getWorld(), name)) {
+                                sender.sendMessage(mm.deserialize("<red>Name already used, choose other!"));
+                                return;
+                            }
+                            new SporeBlossom(sender.getLocation().toCenterLocation(), name);
+                            cel.setToList(sender.getWorld(), name);
                         }))
                 )
                 .register();

@@ -47,7 +47,6 @@ public class TextDisplay {
                 directionZ = 404;
                 break;
         }
-
         Vector vec = player.getLocation().getDirection().setX(directionX).setY(0).setZ(directionZ);
         Location loc = location.setDirection(vec);
 
