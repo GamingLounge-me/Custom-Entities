@@ -13,7 +13,7 @@ public class Remove {
         new CommandAPICommand("custom-entities:remove")
                 .withAliases("ce:remove")
                 .withPermission("CustomEntities.remove")
-                .withArguments(new StringArgument("name")) //array list
+                .withArguments(new StringArgument("name"))
                 .executesPlayer(((player, commandArguments) -> {
                     String name = (String) commandArguments.get("name");
                     cel.removeEntity(player.getWorld(), name);

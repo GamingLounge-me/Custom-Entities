@@ -23,7 +23,7 @@ public class SporeBlossom {
         loc.setPitch(0);
         loc.setYaw(0);
         org.bukkit.entity.BlockDisplay t = (org.bukkit.entity.BlockDisplay) loc.getWorld().spawnEntity(loc, EntityType.BLOCK_DISPLAY);
-        Transformation tr = new Transformation(new Vector3f(-0.5f,1f,-0.5f), new Quaternionf(), new Vector3f(1,-1,1), new Quaternionf());
+        Transformation tr = new Transformation(new Vector3f(-0.5f,1f,-0.5f), new Quaternionf(), new Vector3f(0.8f,-0.8f,0.8f), new Quaternionf());
         t.setTransformation(tr);
         t.setBlock(Bukkit.getServer().createBlockData(Material.SPORE_BLOSSOM));
         t.getPersistentDataContainer().set(customEntitiesList.entities, PersistentDataType.STRING, name);
