@@ -6,6 +6,7 @@ import de.jonas.customentities.commands.Spawn;
 import de.jonas.customentities.commands.User;
 import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPIBukkitConfig;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
@@ -19,7 +20,7 @@ public final class Custom_entities extends JavaPlugin {
     public void onLoad() {
         INSTANCE = this;
 
-        CommandAPI.onLoad(new CommandAPIBukkitConfig(this));
+        if (!CommandAPI.isLoaded()) CommandAPI.onLoad(new CommandAPIBukkitConfig(this));
         new Spawn();
         new Remove();
         new Admin();
