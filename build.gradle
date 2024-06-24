@@ -1,10 +1,9 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'de.jonas'
-version = '1.0'
+version = '2.0'
 
 repositories {
     mavenCentral()
@@ -23,7 +22,7 @@ dependencies {
     implementation "dev.jorel:commandapi-bukkit-shade:9.3.0"
 }
 
-def targetJavaVersion = 17
+def targetJavaVersion = 21
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
@@ -48,10 +47,4 @@ processResources {
     filesMatching('paper-plugin.yml') {
         expand props
     }
-}
-
-shadowJar {
-    archiveBaseName.set('custom-entites')
-    archiveClassifier.set('')
-    relocate("dev.jorel.commandapi", "de.jonas.customentites.commandapi")
 }

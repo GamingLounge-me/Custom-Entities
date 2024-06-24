@@ -1,6 +1,7 @@
 name: custom-entities
-version: '${version}'
+version: "${version}"
 main: de.jonas.customentities.Custom_entities
+loader: de.jonas.customentities.Custom_entitiesLoader
 authors:
   - Jon1Games
-api-version: '1.20'
+api-version: "1.20"

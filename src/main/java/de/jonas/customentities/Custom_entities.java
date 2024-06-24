@@ -1,15 +1,15 @@
 package de.jonas.customentities;
 
+import java.util.logging.Level;
+
+import org.bukkit.plugin.java.JavaPlugin;
+
 import de.jonas.customentities.commands.Admin;
 import de.jonas.customentities.commands.Remove;
 import de.jonas.customentities.commands.Spawn;
 import de.jonas.customentities.commands.User;
 import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPIBukkitConfig;
-
-import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.logging.Level;
 
 
 public final class Custom_entities extends JavaPlugin {
