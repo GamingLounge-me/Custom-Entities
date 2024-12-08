@@ -7,24 +7,31 @@
             "x":"",
             "y":"0",
             "z":"0.0",
-            "pitch":"",
-            "yaw":""
+            "direction":""
         }
     ],
     "entities": [
         {
+            "type": "blockdisplay",
             "block":"white_wool",
             "x":"",
             "y":"-0.6",
             "z":"0",
-            "size":""
+            "size":"",
+            "pitch":"",
+            "yaw":"",
+            "roll":""
         },
         {
+            "type": "blockdisplay",
             "block":"POLISHED_BLACKSTONE_SLAB",
             "x":"",
             "y":"-0.7",
             "z":"0",
-            "size":""
+            "size":"",
+            "pitch":"",
+            "yaw":"",
+            "roll":""
         }
     ]
 }

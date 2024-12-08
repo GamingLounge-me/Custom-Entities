@@ -1,5 +1,7 @@
 # For the Json files:
 # x,y,z is relativ to the players position, which is rounded to the block center
+# Blocks are the blocks that are actually placed
+# Entities are displaced through block/itemsisplays
 
 Commands:
   Admin:
