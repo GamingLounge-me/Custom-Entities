@@ -1,0 +1,5 @@
+Commands:
+  Admin:
+    permission: "custom-entites.admin"
+    aliases:
+      - ce:admin
