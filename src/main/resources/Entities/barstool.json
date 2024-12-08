@@ -1,0 +1,27 @@
+{
+    "name":"barstool",
+    "permission":"custom-entities.entity.barstool",
+    "doku":"x,y,z is relativ to the players position, which is rounded to the block center",
+    "blocks": [
+        {
+            "block":"END_ROD",
+            "x":"",
+            "y":"0",
+            "z":"0.0"
+        }
+    ],
+    "entities": [
+        {
+            "block":"white_wool",
+            "x":"",
+            "y":"-0.6",
+            "z":"0"
+        },
+        {
+            "block":"POLISHED_BLACKSTONE_SLAB",
+            "x":"",
+            "y":"-0.7",
+            "z":"0"
+        }
+    ]
+}
