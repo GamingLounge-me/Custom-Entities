@@ -1,14 +1,19 @@
 package de.jonas.customentities.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.jonas.customentities.CustomEntitiesList;
 import de.jonas.customentities.Entity.Barstool;
 import de.jonas.customentities.Entity.SporeBlossom;
 import de.jonas.customentities.Entity.TextDisplay;
 import dev.jorel.commandapi.CommandAPICommand;
-import dev.jorel.commandapi.arguments.*;
+import dev.jorel.commandapi.arguments.Argument;
+import dev.jorel.commandapi.arguments.ArgumentSuggestions;
+import dev.jorel.commandapi.arguments.FloatArgument;
+import dev.jorel.commandapi.arguments.GreedyStringArgument;
+import dev.jorel.commandapi.arguments.StringArgument;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Spawn {
 
@@ -22,8 +27,8 @@ public class Spawn {
         )));
 
         new CommandAPICommand("custom-entities:spawn")
-                .withAliases("ce:spawn")
-                .withPermission("CustomEntities.Spawn")
+            .withAliases(config.getStringList("Commands.Spawn.aliases").toArray(num -> new String[num]))
+            .withPermission(config.getString("Commands.Spawn.permission"))
                 .withSubcommand(new CommandAPICommand("sign")
                         .withArguments(new StringArgument("Name"))
                         .withArguments(arguments)

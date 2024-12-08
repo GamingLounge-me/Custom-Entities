@@ -7,3 +7,7 @@ Commands:
     permissions: "custom-entites.remove"
     aliases:
       - ce:remove
+  Spawn:
+    permissions: "custom-entites.remove"
+    aliases:
+      - ce:spawn
