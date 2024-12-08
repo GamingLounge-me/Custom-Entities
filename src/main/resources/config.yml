@@ -1,3 +1,6 @@
+# For the Json files:
+# x,y,z is relativ to the players position, which is rounded to the block center
+
 Commands:
   Admin:
     permission: "custom-entites.admin"
