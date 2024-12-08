@@ -2,6 +2,7 @@ package de.jonas.customentities;
 
 import java.util.logging.Level;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.jonas.customentities.commands.Admin;
@@ -15,10 +16,12 @@ import dev.jorel.commandapi.CommandAPIBukkitConfig;
 public final class Custom_entities extends JavaPlugin {
 
     public static Custom_entities INSTANCE;
-    public static String PREFIX;
+    public static FileConfiguration CONFIG;
+
     @Override
     public void onLoad() {
         INSTANCE = this;
+        CONFIG = this.getConfig();
 
         if (!CommandAPI.isLoaded()) CommandAPI.onLoad(new CommandAPIBukkitConfig(this));
         new Spawn();
