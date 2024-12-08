@@ -3,3 +3,7 @@ Commands:
     permission: "custom-entites.admin"
     aliases:
       - ce:admin
+  Remove:
+    permissions: "custom-entites.remove"
+    aliases:
+      - ce:remove
